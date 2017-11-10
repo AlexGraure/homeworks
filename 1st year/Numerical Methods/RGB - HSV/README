@@ -1,0 +1,42 @@
+%Graure Marius Alexandru
+%315CB
+  TASK 1
+  ->Am citit imaginea si am extras dimensiunile acesteia pentru a putea creea
+  vectorii coloana Rx, Gx, Bx ce contin valorile pentru rosu, verde si albastru
+  ->Intr-un for de la 1 la count_bins construiesc vectorul returnat de functie
+  ->Verific intervalul si calculez numarul elementelor incluse in intervalul 
+  respectiv, ce se gasesc in cei trei vectori
+  
+  TASK 2
+  ->Am citit imaginea si am extras dimensiunile acesteia pentru a putea creea
+  vectorii coloana Rx, Gx, Bx ce contin valorile pentru rosu, verde si albastru
+  ->Am impartit fiecare element din Rx,Gx,Bx la 256 si am calculat maximul si
+  minimul din cei trei vectori, rezultand vectorii Cmax si Cmin
+  ->Am construit vectorii H,S si V, ce contin valorile RGB transformate
+  ->Intr-un for de la 1 la count_bins construiesc vectorul returnat de functie
+  ->Verific intervalul si calculez numarul elementelor incluse in intervalul 
+  respectiv, ce se gasesc in cei trei vectori
+  
+  TASK3
+  /*preprocess*/
+  ->Creez caile catre directoarele ce contin/nu contin imagini cu pisici si
+  extrag numarul de imagini cu/fara pisici (N1/N2)
+  ->Creez doua structuri ce contin numele imaginilor cu/fara pisici
+  ->Verific tipul de histograma cerut (RGB/HSV -> don hist) si construiesc caile
+  catre fiecare imagine cu/fara pisici (cu ajutorul functiei fullfile)
+  ->Creez matricea X linie cu linie, adaugand vectorii returnati de rgbHistogram
+  si hsvHistogram
+  
+  /*learn*/
+  ->Construiesc matricea X tilda (Xt) adaugand o coloana (de 1) matricei X
+  ->Rezolv sistemul Xt*w=t folosind procedeul de factorizare QR (Crout)
+  si determin w rezolvand sistemele inferior si superior triunghiulare rezultate
+  
+  TASK4
+  ->Generez matricea de test X si vectorul t utilizand functia implementata la
+  taskul 3 (preprocess)
+  ->Construiesc matricea X tilda (Xt) adaugand o coloana (de 1) matricei X
+  ->Determin vectorul y si verific valorile acestuia; daca y(i)>=0 se adauga la
+  suma 1, in caz contrar, se trece mai departe
+  ->Returnez procentul rezultat 
+  

@@ -1,0 +1,38 @@
+Nume student:Graure Marius-Alexandru
+Grupa:315CB
+
+List.h List.c
+	Implementarea unei liste liniare simplu inlantuite generice. Pornind de la notiunile prezentate la curs si la laborator si avand in vedere principiile de functionare am implementat urmatoarele operatii:
+	-> intitierea listei: alocarea memoriei necesare, si setarea unor parametrii de lista cum ar fi dimensiunea elementului
+	-> adaugarea unui element la inceputul listei
+	-> adaugarea unui element la sfarsitul listei
+	-> eliberarea listei
+	-> afisarea listei
+
+	Operatiile de intializare a listei si de adaugare a unui element aloca memorie pentru lista/element. 
+
+Stack.h Stack.c
+	Implementarea unei stive folosind liste liniare simplu inlantuite. Se tine minte dimensiunea unui element, numarul de elemnte si varful stivei. Pornind de la notiunile prezentate la curs si la laborator si avand in vedere principiile de functionare ale stivei am implementat stiva. 
+	Tin sa mentionez faptul ca in implementarea functiilor am folosit doar structuri de tip stiva pentru parcurgerea elementelor si nu am folosit structuri auxiliare diferite.
+	Am implementat urmatoarele functii:
+	-> initializare stiva
+	-> adaugare element in stiva
+	-> adaugare sortata element in stiva (se scot elementele din stiva pana functia si apoi se insereaza elementul curent la locul potrivit apoi reinsereaza elementele scoase)
+	-> adaugarea unui element ca fiind baza (aceasta operatie presupune scoaterea tuturor elemntelor din stiva, inserarea elementului ce urmeaza sa fie baza stivei, apoi reinserarea elementelor scoase in ordine folosind adaugarea sortata)
+	-> afisarea stivei
+
+Queue.h Queue.c
+	Implementarea unei cozi folosind liste liniare simplu inlantuite. Se permit urmatoarele operatii:
+	-> initializare stiva
+	-> adaugare element in coada
+	-> adaugare sortata element in coada
+
+	Exista o similitudine intre operatiile de stiva si de coada. 
+
+Main.c
+	Contine implementarea efectiva a temei. Se citesc comenzile din fisierul de input, se trateaza si rezultatul se scrie in fisierul de output. Scrierea in fisierul de output se face redirectand outputul de la stdout catre fisierul de iesire. 
+
+	Se citeste pe rand cate o comanda si in functie de ce comanda este se executa operatiile necesare.
+
+Rezultate obtinute:
+	Pe masina locala am obtinut punctajul de 85/85.
