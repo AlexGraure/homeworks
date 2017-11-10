@@ -1,0 +1,32 @@
+325CB GRAURE MARIUS-ALEXANDRU
+TEMA 1 - PP
+
+	In realizarea temei am creat 24 de clase, dintre care, cele mai multe 
+sunt create pe baza cazurilor din tema (assert, assignment, if, for, return, 
+semicolone etc)
+ 	Citesc in clasa READ din fisierul de input, creez un singur string, eli-
+min [ si ] si impart stringul final in tokeni, trimitand un vector de stringuri 
+ca parametru functiei eval din clasa Evaluate.
+ 	Pun stringurile intr-o coada si o inversez. Astfel ordinea ulterioara va
+ fi (b a +) in loc de (+ a b). Folosindu-ma de o stiva de elemente generice 
+ Node, scot stringurile din coada, in functie de ce reprezinta stringul respec-
+tiv, cu NodeFactory creez nodul asteptat. Daca se da de un program, expresie sau
+ operator (obiecte ce trebuie sa aiba noduri fii), se extrag nodurile asteptate 
+din stiva (exemplu: b a + -> a_+_b nodul + cu nodurile fii a si b). Unele noduri
+ cum ar fi ExprNode sau ProgNode pot fi de mai multe tipuri, asa ca ele contine 
+un Node node (generic - clasa de baza) pe care il instantiez in functie de tipul
+ de nod primit ca parametru de constructor, astfel decorand nodul de tip Prog-
+ Node. La sfarsit voi ramane cu un singur nod radacina in stiva.
+	Creez un ConcreteVisitor si apelez metoda accept(ConcreteVisitor) a no-
+dului final.
+	Astfel se parcurge arborele in adancime alternandu-se metodele accept si
+ visit.
+	Se viziteaza fiecare nod. Simbolurile din assignment si valorile atri-
+buite sunt pastrate intr-un hashmap in ConcreteVisitor, fiind suprascrise (daca 
+trebuie modificata valoarea) sau sterse (daca cumva asignarea s-a realizat in 
+cadrul unui for de exemplu) de-a lungul programului.
+	Erorile sunt salvate tot in ConcreteVisitor, in functie de valoarea lor 
+(3,2,1), la final alegandu-se maximul si afisandu-se eroarea respectiva valorii.
+In caz contrar, se afiseaza valoarea nodului rezultat, salvat de ReturnNode in 
+ConcreteVisitor.
+	Varianta pe care am mers este greedy assert.

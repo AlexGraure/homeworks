@@ -1,0 +1,66 @@
+325CB GRAURE MARIUS-ALEXANDRU
+TEMA 2 - PP
+-- ADT --
+	Ma folosesc de o lista de tupluri - Archive. La evaluarea programelor ma
+	folosesc de Either String (Maybe Int). Atunci cand ajung sa evaluez un 
+	Return intorc Just, iar in rest Nothing.
+	okay = 1
+	wrong = 0
+Functii:
+	getVal - functie ce primeste un string si o arhiva si intoarce valoarea
+		int asociata acelui string'
+	evalExpr - functie ce evalueaza o expresie, primind expresia si arhiva
+		daca expr este:
+			- Value returneaza numarul
+			- Symbol, se foloseste de getVal pentru a obtine 
+			numarul corespunzator simbolului
+			- (Smaller x y) a, verifica x; si returneaza eroare 
+			sau verifica y -> returneaza eroare sau verifica daca 
+			x < y si returneaza 1 sau 0 (okay sau wrong)
+			- (Equal x y) a, verifica x; returneaza eroare sau veri-
+			fica y; returneaza eroare sau verifica daca x == y si
+			returneaza okay sau wrong
+			- (Mult x y) a, verifica x; returneaza eroare sau veri-
+			fica y; returneaza eroare sau returneaza x * y
+			- (Sub x y) a, verifica x; returneaza eroare sau veri-
+			fica y; returneaza eroare sau returneaza x - y
+			- (Add x y) a, verifica x; returneaza eroare sau veri-
+			fica y; returneaza eroare sau returneaza x + y
+	addTuplu - functie ce primeste un simbol, un numar si o arhiva si adauga
+		un tuplu in arhiva daca nu este, iar in caz contrat inlocuieste
+		tuplul cu cel nou (actualizeaza arhiva)
+	evalAsgn - functie ce evalueaza (Asgn symbol expr) arhiva, verifica expr
+		si returneaza eroare sau returneaza  Nothing si arhiva updatata
+	loop - functie prin care se realizeaza bucla in for; evaluez expresia, 
+		daca primesc eroare o returnez; in caz contrar verific rezulta-
+		tul evaluarii; daca este egal cu okay, atunci verific asignarea;
+		daca primesc eroare, o returnez, iar in caz contrar evaluez pro-
+		gramul: daca primesc eroare o returnez; daca primesc Just intorc
+		rezultatul, iar daca primesc Nothing continui cu loop; daca dupa
+		asignare primesc un rezultat diferit de okay, atunci ies din 
+		loop
+	evalProg - functie ce evalueaza un program
+		dace prog este:
+			- Return - evaluez expresia si returnez eroare sau Just 
+			rezultat
+			- Assert - evaluez expresia: returnez eroare sau daca 
+			primesc okay -> returnez Nothing si arhiva updatata;
+			altfel "Assert failed"
+			- If - evaluez conditia (expresie) -> returnez eroare
+			sau verific ce primesc: okay (evaluez primul program si
+			returnez eroare sau Nothing/ Just Int cu arhiva updatata
+			) sau wrong (evaluez al doilea program si returnez eroa-
+			re sau Nothing/ Just Int si arhiva updatata)
+			- Seq - evaluez primul program; daca primesc eroare o
+			returnez; daca primesc rezultat -> Nothing (rulez al
+			doilea program si returnez eriare sau Nothing/Just Int
+			si arhiva updatata) sau Just Int (returnez Right Just
+			Int si arhiva updatata)
+			- Eq - evaluez asignare si intorc eroare sau Nothing si
+			arhiva updatata
+			- For - evaluez asignarea: intorc eroare daca primesc 
+			sau daca primesc Nothing execut loop (pot sa returnez 
+			eroare, Nothing sau Just Int si arhiva updatata)
+	evalAdt - evaluez programul -> returnez eroare sau: daca primesc Nothing
+		returnez Missing return (deoarece doar Return intoarce direct un
+		Just Int) iar daca primesc Just Int, returnez rezultatul
