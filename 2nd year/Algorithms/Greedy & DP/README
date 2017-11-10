@@ -1,0 +1,40 @@
+Graure Marius-Alexandru
+325CB
+
+CITIREA: la citire am folosit bufferedReader si StringTokenizer si am definit
+o functie pentru fiecare caz (int, long, double, string)
+
+PROBLEMA 1 - POINTS
+	Citesc numarul de puncte si numarul de intervale si extrag din fisier 
+punctele si intervalele (inceputul si sfarsitul fiecaruia).
+	Sortez intervalele in functie de inceput.
+	Aplic algoritmul Greedy pe puncte si intervale astfel: prefixez margi-
+nea right si indexul pentru intervale; intr-un for iau fiecare punct si cat timp
+punctul meu este mai mare decat marginea dreapta (right), avansez in for; altfel
+cresc nr de intervale ce trebuie returnat si in alt for (j dela index la numarul
+de intervale), verific daca punctul meu curent este mai mare decat punctul de
+unde incepe intervalul meu curent si modific limita right daca punctul unde se 
+termina intervalul curent este mai mare ca right (fixez o noua limita); daca 
+punctul curent nu este mai mare ca punctul de unde incepe intervalul, incremen-
+tez index si ies din forul din interior.
+	La sfarsit returnez si afisez numarul de intervale obtinut.
+	Complexitate O(MlogN + N) (m nr de intervale, N nr de puncte)
+	
+PROBLEMA 3 - STROPITORI
+	Citesc numele stadionului, numarul de stropitori si lungimea stadionului
+si punctele unde sunt plasate stropitorile.
+	X este vector de puncte de plasare ale stropitorilor
+	P este vector de distante (pe ce distanta uda o stropitoare).
+	Prefixez un previousMode (modul stropitoarei precedente).
+	Intr-un for de la 0 la numarul de stropitori, prfixez modul stropitoarei
+i ca fiind B (blocata). Daca i este mai mare ca 0 (deci am trecut de prima stro-
+pitoare), verific daca modul stropitoarei precedente este R (caz in care verific
+daca stropitoarea curenta ar putea stropi in dreapta fara sa dea peste cealalta 
+stropitoare sau jetul ei de apa...si setez modul L). Daca i este 0 pur si simplu
+verific daca poate uda in stanga si fixez modul daca este cazul.
+	Daca stropitoarea n-a fost setata, verific daca poate stropi in dreapta,
+caz in care o setez. 
+	Daca modul nu este B, incrementez nr de stropitori (count) ce va fi re-
+turnat.
+	Repet totul pana ies din for si returnez count.
+	Complexitatea este O(n) (n este numarul de stropitori).

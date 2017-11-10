@@ -1,0 +1,52 @@
+Graure Marius-Alexandru
+325CB
+
+CITIREA: la citire am folosit bufferedReader si StringTokenizer si am definit
+o functie pentru fiecare caz (int, long, double, string)
+
+PROBLEMA 1 - PERMUTARI
+	Citesc numarul de cuvinte si fiecare cuvant.
+	Ma folosesc de un HashMap litera-numar si de un HashMap numar-litera.
+	Presetez graful (adaug nodurile).
+	In metoda setGraph iau cate doua cuvinte (1 cu 2, 2 cu 3...) si verific
+lungimea cuvintelor: ***daca primul cuvant este mai mare decat al doilea, compar
+litera j a primului cuvant cu litera j a celui de-al doilea cuvant; cand gasesc
+diferenta, creez muchia u-v; daca dupa executia forului nu se gaseste nicio di-
+ferenta, setez impossible cu 1 si ies din metoda setGraph.
+		     ***daca al doilea cuvant este mai mare, atunci repet partea
+de for din cazul precedent.
+	In metoda topSort realizez sortarea topologica bazata pe algoritmul lui
+Kahn: iau fiecare nod din graf si adaug intr-o stiva nodurile in care nu intra
+nicio muchie; cat timp stiva nu este goala, scot nodul u de pe stiva, il adaug
+in lista rezultat (L) si ii scad fiecarui vecin al sau (v) numarul de muchii ce
+intra in v; scad si numarul de muchii din graf; daca v nu maiare muchii ce intra
+in el, atunci in adaug in stiva S; daca la sfarsitul while-ului mai am muchii in
+graf, atunci scriu in fisier Imposibil; in caz contrar, formez stringul ce tre-
+buie returnat prin concatenarea literelor corespunzatoare nodurile din graf (fo-
+losindu-ma de HashMapul numar-litera).
+
+PROBLEMA 3 - PATRULA
+	Color.java - enumeratie pentru culori
+	Creez graful. In clasa Graph tin intr-o matrice de adiacenta numarul de
+muchii de la u la v (ex. de cate ori apare muchia 1->2). Adaug atat muchia u->v
+cat si muchia v->u.
+	Calculez caile minime folosindu-ma de metodele getPaths, getDistances si 
+computeAllPaths. Calculez vetorul de distante folosindu-ma de algoritmul BFS din
+laborator apoi calculez recursiv toate caile minime: adaug nodul u (N initial) 
+in lista path; daca nodul u este nodul 1 inseamna ca am ajuns la destinatie si
+adaug o copie a listei path in lista de cai din graf (paths); altfel, parcurg
+linia din matricea de adiacenta corespunzatoare nodului u; daca exista muchie
+intre u si v si diferenta dintre distante este 1, inseamna ca v este vecin al
+lui u si apelez metoda computeAllPaths pentru v. La sfarsit scot ultimul nod din
+path.
+	Astfel recursiv se va verifica fiecare posibila cale.
+	In final raman cu fiecare cale gasita in lista de liste (cai minime) din
+graf (paths).
+	Ca sa obtin media, in metoda getAverage creez un vector de drumuri co-
+respunzatoare fiecaui nod.
+	Din fiecare cale iau cate doua noduri si formez numarul de drumuri prin
+inmultirea numarului precedent cu numarul de muchii (u, v).
+	Pentru fiecare nod din cale, actualizez vectorul de drumuri (cu nr obti-
+nut anterior daca este nod terminal sau cu 2 * nr daca este nod interior).
+	Scriu in fisier numarul total de cai de deplasare, calculez maximul din
+map (vectorul de drumuri) si returnez media.
