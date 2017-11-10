@@ -1,0 +1,31 @@
+GRAURE MARIUS-ALEXANDRU
+325CB
+
+TEMA 2
+
+Dupa setarea TCP (realizata cu ajutorul laboratorului 8)
+CLIENT:
+	Citesc comenzi de la tastatura si trimit serverului.
+	Scriu in fisierul de log ce primesc de la tastatura si de la server, 
+doar daca nu este vorba de comanda quit, caz in care nu opresc clientul.
+
+SERVER: 
+	Citesc din fisierul cu date despre clienti si creez o baza de date (un 
+vector de struct TUser) despre clienti.
+	Primesc comenzi de la clienti (sau tastatura, caz in care poat fi doar
+quit si trimit mesaje de quit clientilor si ii inchid) si reactionez in functie
+de comanda primita.
+	LOGIN -> trimit numarul cardului si pinul primit functiei checkPin in
+	care verific daca nr cardului se gaseste in baza de date si daca pinul
+	este cel corect si intorc mesajele corespunzatoare.
+	
+	LOGOUT -> deloghez clientul logat.
+	LISTSOLD -> trimit clientului soldul userului curent.
+	GETMONEY -> folosindu-ma de functia getMoney, scad din soldul userului
+	curent suma ceruta.
+	PUTMONEY -> folosindu-ma de functia putMoney, adun la soldul userului
+	curent suma ceruta.
+	QUIT (client) -> inchid clientul curent
+	QUIT (server) -> trimit mesaje de quit tuturor clientilor dupa care
+	inchid serverul 
+

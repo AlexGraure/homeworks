@@ -1,0 +1,40 @@
+GRAURE MARIUS-ALEXANDRU
+325CB
+
+TEMA 3
+
+	M-am folosit de laboratorul cu multiplexare pentru proxy.
+	Cand se conecteaza un client, se apeleaza functia exchange ce realizeaza
+schimbul de informatii intre client-proxy-server.
+	Ma folosesc de functia Readline din laborator ca sa citesc de la client 
+sau server.
+	Cu ajutorul functiei getPatHostPort obtin path-ul, hostname-ul si portul
+(daca se primeste un nou port - altfel default 80). Aici se realizeaza parsarea
+comenzii primite (dupa ce o salvez in sendbuf); ma folosesc de strtok pentru
+asta si de delimitatorii: " \n:/" (in functie de nevoie). Daca cumva am primit o
+cale relativa, mai citesc o linie ce va contine hostul.
+	Realizez conexiunea cu serverul.
+	Functia doTheConection realizeaza conexiunea cu portul. Conexiunea am
+realizat-o pe baza laboratorului de http. Am creat o struct hostent* si m-am
+folosit de functia gethostbyname ca sa obtin adresa ip a serverului.
+	Dupa obtinerea socketului (comanda socket), setez serv_addr si realizez 
+conectarea la server. La sfarsit returnez socketul.
+	Comanda post nu am reusit s-o implementez si de aceea dau return 0.
+	Trimit tot ce am primit la server.
+	Incep sa citesc de la server. Parsez liniile primite. Daca primesc 200
+OK continui parsarea. Daca pot face cache (no_cache este 0) creez fisierul nou
+sau in cazul in care cache-ul exista, trimit din fisier cu funtia sendFromFile
+in care deschid fisierul binar spre citire, citesc linie cu linie si le trimit
+pe rand la client.
+	Citesc headerele. Daca in timpul parsarii dau de Cache-Control si acesta
+este setat pe no-cache sau private, atunci setez no_cache pe 1. La fel si in
+cazul Pragma cu no_cache.
+	Continui sa citesc de la server cat timp numarul de bytes este diferit 
+de 0.
+	In tot acest timp trimit la client ce primesc de la server, iar in cazul
+in care no_cache este 0, scriu si in fisier.
+
+	M-am mai folosit de functii auxiliare cum ar fi: getSymbolNr (ce retur-
+neaza numarul de aparitii ale caracterului primit ca parametru din sirul primit
+ca parametru), getPath (ce returneaza un char* ce reprezinta calea relativa), 
+getPathName (returneaza un char*, inlocuind / cu _ pentru numele fisierului)
